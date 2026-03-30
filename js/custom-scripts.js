@@ -4,6 +4,68 @@ Author URL: http://webthemez.com
 */
 jQuery(function($) {
     'use strict';
+
+    var heroSlider = (function() {
+        var $slider = $('.hero-mobile-slider');
+        if (!$slider.length) {
+            return null;
+        }
+
+        var $slides = $slider.find('.hero-mobile-slide');
+        var currentIndex = 0;
+        var intervalId = null;
+        var slideDelay = 5600;
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function setActiveSlide(index) {
+            currentIndex = index;
+            $slides.removeClass('is-active').eq(index).addClass('is-active');
+        }
+
+        function stop() {
+            if (intervalId) {
+                window.clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        function start() {
+            if (intervalId || reducedMotion.matches || $slides.length < 2) {
+                return;
+            }
+
+            intervalId = window.setInterval(function() {
+                setActiveSlide((currentIndex + 1) % $slides.length);
+            }, slideDelay);
+        }
+
+        function sync() {
+            setActiveSlide(currentIndex);
+            stop();
+            start();
+        }
+
+        setActiveSlide(0);
+        sync();
+
+        if (reducedMotion.addEventListener) {
+            reducedMotion.addEventListener('change', sync);
+        } else {
+            reducedMotion.addListener(sync);
+        }
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stop();
+                return;
+            }
+            start();
+        });
+
+        return {
+            sync: sync
+        };
+    })();
      
     $(window).scroll(function(event) {
         Scroll();
