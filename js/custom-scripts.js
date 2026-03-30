@@ -15,7 +15,6 @@ jQuery(function($) {
         var currentIndex = 0;
         var intervalId = null;
         var slideDelay = 5600;
-        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         function setActiveSlide(index) {
             currentIndex = index;
@@ -30,7 +29,7 @@ jQuery(function($) {
         }
 
         function start() {
-            if (intervalId || reducedMotion.matches || $slides.length < 2) {
+            if (intervalId || $slides.length < 2) {
                 return;
             }
 
@@ -47,12 +46,6 @@ jQuery(function($) {
 
         setActiveSlide(0);
         sync();
-
-        if (reducedMotion.addEventListener) {
-            reducedMotion.addEventListener('change', sync);
-        } else {
-            reducedMotion.addListener(sync);
-        }
 
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {

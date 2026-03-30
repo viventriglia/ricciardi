@@ -292,7 +292,12 @@ border-left: 1px solid #171717;
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 250px 0 120px;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+}
+#hero-banner .banner-inner .container {
+  width: 100%;
 }
 .hero-mobile-slider {
   display: block;
@@ -908,7 +913,7 @@ text-align: center;
 min-height: 78vh;
 }
 #hero-banner .banner-inner {
-padding: 150px 0 90px;
+min-height: 78vh;
 }
 #hero-banner h2 {
 font-size: 29px;
@@ -953,7 +958,7 @@ padding: 7px 0 0;
 min-height: 82vh;
 }
 #hero-banner .banner-inner {
-padding: 170px 0 100px;
+min-height: 82vh;
 }
 #hero-banner h2 {
 font-size: 36px;
