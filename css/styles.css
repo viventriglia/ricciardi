@@ -849,9 +849,48 @@ color:#fff;
 #contact-us h2 {
 }
 /*Contact*/
- .contact-info{
- padding:60px 0;
- }
+.contact-info{
+ padding:30px 0 80px;
+}
+#contact {
+  background: #f8f8f6;
+}
+.contact-card {
+  min-height: 240px;
+  padding: 34px 28px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #e6e6e1;
+  box-shadow: 0 18px 40px rgba(34, 34, 34, 0.06);
+}
+.contact-card h3 {
+  margin: 0 0 28px;
+  font-size: 34px;
+  line-height: 1.2;
+  color: #222222;
+}
+.contact-lines p {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #5c5c5c;
+}
+.contact-lines p:last-child {
+  margin-bottom: 0;
+}
+.contact-lines i {
+  width: 24px;
+  margin-right: 8px;
+  color: #48B1DF;
+  text-align: center;
+}
+.contact-lines a {
+  color: #5c5c5c;
+}
+.contact-lines a:hover,
+.contact-lines a:focus {
+  color: #48B1DF;
+}
 .contact-info address {
 margin-bottom: 20px;
 font-style: normal;
@@ -929,6 +968,25 @@ padding: 0 18px;
 width: auto;
 padding: 10px 22px;
 }
+#contact {
+padding-bottom: 20px;
+}
+.contact-info {
+padding: 10px 0 45px;
+}
+.contact-card {
+min-height: 0;
+padding: 28px 20px;
+margin-bottom: 20px;
+}
+.contact-card h3 {
+font-size: 28px;
+margin-bottom: 20px;
+}
+.contact-lines p {
+font-size: 18px;
+line-height: 1.6;
+}
 #portfolio .portfolio-filter {
 list-style: none;
 padding: 0;
@@ -973,6 +1031,16 @@ padding: 0 24px;
 #hero-banner a {
 width: auto;
 padding: 10px 22px;
+}
+.contact-card {
+min-height: 0;
+margin-bottom: 24px;
+}
+.contact-card h3 {
+font-size: 30px;
+}
+.contact-lines p {
+font-size: 19px;
 }
 }
 .navbar-brand img {
