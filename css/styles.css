@@ -404,6 +404,7 @@ border-left: 1px solid #171717;
   object-position: center;
   display: block;
 }
+#hero-banner h1,
 #hero-banner h2 {
   margin: 0;
   font-size: 56px;
@@ -412,6 +413,7 @@ border-left: 1px solid #171717;
   letter-spacing: -0.02em;
   text-align:center;  
 }
+#hero-banner h1 b,
 #hero-banner h2 b{
 color:#48B1DF;
 }
@@ -439,6 +441,7 @@ background: #fff;
 border: 2px solid #fff;
 color:#000;
 }
+#hero-banner .banner-inner h1 > span,
 #hero-banner .banner-inner h2 > span {
   color: #45aed6;
 }
@@ -1286,6 +1289,7 @@ min-height: 78vh;
 #hero-banner .banner-inner {
 min-height: 78vh;
 }
+#hero-banner h1,
 #hero-banner h2 {
 font-size: 36px;
 line-height: 1.15;
@@ -1444,6 +1448,7 @@ min-height: 82vh;
 #hero-banner .banner-inner {
 min-height: 82vh;
 }
+#hero-banner h1,
 #hero-banner h2 {
 font-size: 36px;
 line-height: 44px;
