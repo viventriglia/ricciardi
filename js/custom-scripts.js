@@ -215,6 +215,93 @@ jQuery(function($) {
 
         return true;
     })();
+
+    var cursorFx = (function() {
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            return null;
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return null;
+        }
+
+        var body = document.body;
+        var halo = document.createElement('div');
+        var targetX = window.innerWidth / 2;
+        var targetY = window.innerHeight / 2;
+        var haloX = targetX;
+        var haloY = targetY;
+        var rafId = null;
+        var isVisible = false;
+        var isHovering = false;
+
+        halo.className = 'cursor-fx';
+        body.appendChild(halo);
+
+        function setHoverState(nextState) {
+            if (isHovering === nextState) {
+                return;
+            }
+
+            isHovering = nextState;
+            halo.classList.toggle('is-hovering', nextState);
+        }
+
+        function render() {
+            haloX += (targetX - haloX) * 0.18;
+            haloY += (targetY - haloY) * 0.18;
+            halo.style.transform = 'translate3d(' + haloX + 'px,' + haloY + 'px,0) translate(-50%, -50%)';
+
+            if (isVisible || Math.abs(targetX - haloX) > 0.2 || Math.abs(targetY - haloY) > 0.2) {
+                rafId = window.requestAnimationFrame(render);
+                return;
+            }
+
+            rafId = null;
+        }
+
+        function ensureRender() {
+            if (!rafId) {
+                rafId = window.requestAnimationFrame(render);
+            }
+        }
+
+        function hide() {
+            isVisible = false;
+            body.classList.remove('cursor-fx-active');
+            setHoverState(false);
+            ensureRender();
+        }
+
+        document.addEventListener('mousemove', function(event) {
+            targetX = event.clientX;
+            targetY = event.clientY;
+            isVisible = true;
+            body.classList.add('cursor-fx-active');
+            setHoverState(!!event.target.closest('a, button, .btn, .brand-logo-slot, .brand-carousel__arrow'));
+            ensureRender();
+        });
+
+        document.addEventListener('mouseout', function(event) {
+            if (!event.relatedTarget) {
+                hide();
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            setHoverState(true);
+        });
+
+        document.addEventListener('mouseup', function(event) {
+            setHoverState(!!event.target.closest('a, button, .btn, .brand-logo-slot, .brand-carousel__arrow'));
+        });
+
+        window.addEventListener('blur', hide);
+
+        return {
+            hide: hide
+        };
+    })();
      
     $(window).scroll(function(event) {
         Scroll();

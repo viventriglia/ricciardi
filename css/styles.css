@@ -35,6 +35,29 @@ a:focus {
   text-decoration: none;
   color: #2a95be;
 }
+.cursor-fx {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 11000;
+  transition: opacity 180ms ease, background 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+.cursor-fx {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 222, 255, 0.22) 0%, rgba(72, 177, 223, 0.14) 34%, rgba(72, 177, 223, 0.06) 56%, rgba(72, 177, 223, 0) 76%);
+  filter: blur(1.6px);
+}
+body.cursor-fx-active .cursor-fx {
+  opacity: 1;
+}
+.cursor-fx.is-hovering {
+  background: radial-gradient(circle, rgba(139, 222, 255, 0.28) 0%, rgba(72, 177, 223, 0.18) 34%, rgba(72, 177, 223, 0.08) 58%, rgba(72, 177, 223, 0) 80%);
+  filter: blur(1.9px);
+}
 hr {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #fff;
