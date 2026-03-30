@@ -611,31 +611,69 @@ padding:0px;
 transition: all .2s ease-in-out;
 margin-bottom: 15px;
 }
-#testimonial {
-  background: #222222;
-  background-size: cover;
-  padding: 100px 0;
-  color: #fff;
+.brand-area {
+  padding: 100px 0 85px;
+  background: #f8f8f6;
 }
-#testimonial h2{
-color:#fff;
+.brand-area .section-header {
+  margin-bottom: 42px;
 }
-#testimonial h4 {
-  color: #fff;
-  margin-bottom: 8px;
+.brand-area .section-header p {
+  max-width: 860px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #5c5c5c;
 }
-#testimonial small {
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.brand-item {
+  min-height: 170px;
+  padding: 22px 18px 18px;
+  border: 1px solid #e7e7e1;
+  background: rgba(255, 255, 255, 0.84);
+  text-align: center;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+.brand-logo-slot {
+  min-height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #d5e4eb;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6fbfe 100%);
+  color: #9cb9c7;
+  font-size: 30px;
+}
+.brand-logo-slot img {
+  max-width: 100%;
+  max-height: 54px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.brand-item__label {
   display: block;
-  margin-bottom: 10px;
-  color: rgba(255, 255, 255, 0.7);
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6a6a6a;
 }
-#testimonial .btns {
-  margin-top: 10px;
-}
-#carousel-testimonial a.btn.btn-primary.btn-sm {
-background: transparent;
-border: 1px solid rgba(255, 255, 255, 0.2);
-margin: 0 8px;
+@media (hover: hover) and (pointer: fine) {
+  .brand-item:hover {
+    transform: translateY(-3px);
+    border-color: #cfe1ea;
+    box-shadow: 0 18px 32px rgba(34, 34, 34, 0.05);
+  }
+  .brand-item:hover .brand-logo-slot {
+    border-color: #48B1DF;
+    color: #48B1DF;
+  }
 }
 #about {
   padding: 100px 0;
@@ -684,49 +722,6 @@ margin: 0 8px;
   border: 1px solid #48B1DF;
   margin: 5px 10px;
 }
-/*Testimonial Area*/
-
-.testimonial-area{
-	padding-bottom:60px;
-}
-.single-testimonial{
-	margin-bottom:30px;
-}
-.single-testimonial blockquote{
-	padding:15px 20px;
-	margin-bottom: 22px;
-	position:relative;
-	-webkit-transition:all .5s ease;
-	-moz-transition:all .5s ease;
-	transition:all .5s ease;
-	font-size: 14px;
-	background: rgba(52, 52, 52, 1);
-
-	color: #919191;
-line-height: 22px;
-
-	border-radius: 40px 10px 10px 0;
-	border: 0;
-}
- 
-.single-testimonial blockquote:after{
-	/* position:absolute; */
-	/* bottom:-19px; */
-	/* left:45px; */
-	content:"";
-	/* border-top: 19px solid rgba(255, 255, 255, 0.29); */
-
-	/* border-right: 22px solid transparent; */
-}
-.single-testimonial img{
-	border-radius: 0px 50% 50%;
-}
-.single-testimonial h5{
-	padding: 8px 0 0px;
-	font-size: 16px;
-	color: #48B1DF;
-}
- 
 .progress {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1069,6 +1064,25 @@ padding: 0 18px;
 #hero-banner a {
 width: auto;
 padding: 10px 22px;
+}
+.brand-area {
+padding: 80px 0 65px;
+}
+.brand-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 16px;
+}
+.brand-item {
+min-height: 136px;
+padding: 18px 14px 16px;
+}
+.brand-logo-slot {
+min-height: 72px;
+font-size: 24px;
+}
+.brand-item__label {
+font-size: 12px;
+letter-spacing: 0.06em;
 }
 #contact {
 padding-bottom: 20px;
