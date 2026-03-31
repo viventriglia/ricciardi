@@ -761,44 +761,58 @@ border-right: 1px solid #171717;
   background: #f8f8f6;
 }
 .contact-card {
-  min-height: 240px;
+  min-height: 0;
   width: 100%;
-  padding: 34px 28px;
+  padding: 12px;
   text-align: left;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid #e6e6e1;
-  box-shadow: 0 18px 40px rgba(34, 34, 34, 0.06);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 .contact-card h3 {
+  position: relative;
   margin: 0 0 28px;
-  font-size: 34px;
+  padding-bottom: 18px;
+  font-size: 32px;
   line-height: 1.2;
   color: #222222;
   text-align: left;
 }
+.contact-card h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 54px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(72, 177, 223, 0.9), rgba(72, 177, 223, 0));
+}
 .contact-lines p {
   margin: 0 0 12px;
   font-size: 20px;
-  line-height: 1.7;
+  line-height: 1.65;
   color: #5c5c5c;
 }
 .contact-lines p:last-child {
   margin-bottom: 0;
 }
 .contact-lines i {
-  width: 24px;
-  margin-right: 8px;
-  color: #48B1DF;
+  display: inline-block;
+  width: 34px;
+  margin-right: 12px;
+  color: #2f6f8b;
+  font-size: 15px;
   text-align: center;
 }
 .contact-lines__row {
   display: grid;
-  grid-template-columns: 24px 1fr;
-  column-gap: 8px;
+  grid-template-columns: 34px 1fr;
+  column-gap: 12px;
   align-items: center;
 }
 .contact-lines__row--offset {
-  padding-left: 32px;
+  padding-left: 46px;
 }
 .contact-lines__row--offset .contact-lines__text {
   grid-column: 1;
@@ -829,6 +843,10 @@ border-right: 1px solid #171717;
 .contact-lines a:hover::after,
 .contact-lines a:focus::after {
   transform: scaleX(1);
+}
+.contact-lines a:hover i,
+.contact-lines a:focus i {
+  color: #24759a;
 }
 .contact-hours {
   display: flex;
@@ -923,8 +941,12 @@ border-right: 1px solid #171717;
  display: inline-block; 
 
 padding: 3px 0;
-width: 31px;
+width: 35px;
 text-align: center;
+}
+#footer .social-icons a {
+  display: inline-block;
+  font-size: 17px;
 }
 @media only screen and (min-width: 768px) {
   #footer .social-icons {
@@ -1048,8 +1070,8 @@ padding: 10px 0 45px;
 }
 .contact-card {
 min-height: 0;
-padding: 28px 20px;
-margin-bottom: 20px;
+padding: 8px 0;
+margin-bottom: 22px;
 }
 .contact-info .row {
 display: block;
@@ -1111,7 +1133,8 @@ padding: 0 24px;
 }
 .contact-card {
 min-height: 0;
-margin-bottom: 24px;
+padding: 10px 0;
+margin-bottom: 26px;
 }
 .contact-card h3 {
 font-size: 30px;
