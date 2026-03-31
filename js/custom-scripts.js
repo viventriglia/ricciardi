@@ -45,7 +45,16 @@ jQuery(function($) {
         }
 
         setActiveSlide(0);
-        sync();
+
+        if ($slider.hasClass('is-booting')) {
+            window.setTimeout(function() {
+                $slider.removeClass('is-booting');
+                stop();
+                start();
+            }, 140);
+        } else {
+            sync();
+        }
 
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
