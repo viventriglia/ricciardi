@@ -187,6 +187,17 @@ jQuery(function($) {
         };
     })();
 
+    var $navToggle = $('.navbar-toggle');
+    var $navCollapse = $('.navbar-collapse');
+
+    $navCollapse.on('shown.bs.collapse', function() {
+        $navToggle.attr('aria-label', 'Chiudi menu');
+    });
+
+    $navCollapse.on('hidden.bs.collapse', function() {
+        $navToggle.attr('aria-label', 'Apri menu');
+    });
+
     $(window).scroll(function(event) {
         Scroll();
         updateBackToTop();
@@ -205,6 +216,11 @@ jQuery(function($) {
         $('html, body').animate({
             scrollTop: $target.offset().top - 5
         }, 1000);
+
+        if (window.innerWidth < 768 && $navCollapse.hasClass('in')) {
+            $navCollapse.collapse('hide');
+        }
+
         window.setTimeout(function() {
             link.blur();
         }, 120);
@@ -254,6 +270,7 @@ jQuery(function($) {
     }
 
     updateBackToTop();
+    Scroll();
 
   
     new WOW().init();
