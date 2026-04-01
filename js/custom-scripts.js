@@ -162,11 +162,39 @@ jQuery(function($) {
         var prevButton = root.querySelector('.brand-carousel__arrow--prev');
         var nextButton = root.querySelector('.brand-carousel__arrow--next');
         var autoplayDelay = 10000;
-        var allItems = Array.prototype.slice.call(track.querySelectorAll('.brand-item'));
+        var manifestItems = Array.isArray(window.__BRAND_LOGOS__) ? window.__BRAND_LOGOS__ : [];
+        var allItems = [];
         var pageCount = 0;
         var currentPage = 0;
         var autoplayId = null;
         var resizeTimer = null;
+
+        function createBrandItem(brand) {
+            var item = document.createElement('div');
+            var slot = document.createElement('div');
+            var image = document.createElement('img');
+
+            item.className = 'brand-item';
+            slot.className = 'brand-logo-slot';
+            image.src = brand.src;
+            image.alt = brand.alt || '';
+            image.loading = 'lazy';
+            image.decoding = 'async';
+
+            slot.appendChild(image);
+            item.appendChild(slot);
+
+            return item;
+        }
+
+        function hydrateItems() {
+            if (manifestItems.length) {
+                allItems = manifestItems.map(createBrandItem);
+                return;
+            }
+
+            allItems = Array.prototype.slice.call(track.querySelectorAll('.brand-item'));
+        }
 
         function getLayout() {
             var width = window.innerWidth;
@@ -190,6 +218,12 @@ jQuery(function($) {
         }
 
         function renderPage(index) {
+            if (!pageCount) {
+                track.style.transform = 'translateX(0)';
+                updateControls();
+                return;
+            }
+
             currentPage = (index + pageCount) % pageCount;
             track.style.transform = 'translateX(' + (-currentPage * 100) + '%)';
             updateControls();
@@ -219,6 +253,14 @@ jQuery(function($) {
             var i;
 
             track.innerHTML = '';
+
+            if (!allItems.length) {
+                pageCount = 0;
+                currentPage = 0;
+                stopAutoplay();
+                renderPage(0);
+                return;
+            }
 
             for (i = 0; i < allItems.length; i += layout.perPage) {
                 var pageItems = allItems.slice(i, i + layout.perPage);
@@ -271,6 +313,7 @@ jQuery(function($) {
             startAutoplay();
         });
 
+        hydrateItems();
         rebuild();
 
         return {
