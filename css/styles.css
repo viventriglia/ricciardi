@@ -154,6 +154,7 @@ text-transform: uppercase;
 }
 .navbar-brand img {
   height: 60px;
+  max-width: 240px;
   width: auto;
   display: block;
 }
@@ -313,6 +314,7 @@ text-transform: uppercase;
   }
   .navbar-brand img {
     height: 64px;
+    max-width: 280px;
   }
 }
 
@@ -1317,6 +1319,7 @@ grid-template-columns: 92px 1fr;
 }
 .navbar-brand img {
     height: 60px;
+    max-width: 240px;
     width: auto;
     display: block;
 }
