@@ -487,18 +487,33 @@ jQuery(function($) {
 
     var $navToggle = $('.navbar-toggle');
     var $navCollapse = $('.navbar-collapse');
+    var $mainNav = $('#main-nav');
+
+    function updateMobileNavHeight() {
+        var navHeight = $mainNav.find('.navbar-header').outerHeight() || $mainNav.outerHeight() || 82;
+
+        document.documentElement.style.setProperty('--mobile-nav-height', navHeight + 'px');
+    }
+
+    updateMobileNavHeight();
 
     $navCollapse.on('shown.bs.collapse', function() {
         $navToggle.attr('aria-label', 'Chiudi menu');
+        updateMobileNavHeight();
     });
 
     $navCollapse.on('hidden.bs.collapse', function() {
         $navToggle.attr('aria-label', 'Apri menu');
+        updateMobileNavHeight();
     });
 
     $(window).scroll(function(event) {
         Scroll();
         updateBackToTop();
+    });
+
+    $(window).on('resize orientationchange', function() {
+        updateMobileNavHeight();
     });
 
     $('a[href^="#"]').not('[href="#"]').on('click', function(event) {
