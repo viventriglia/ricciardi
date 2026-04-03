@@ -14,7 +14,7 @@ jQuery(function($) {
         var $allSlides = $slider.find('.hero-mobile-slide');
         var $slides = $();
         var currentIndex = 0;
-        var intervalId = null;
+        var transitionTimer = null;
         var slideDelay = 7000;
         var resizeTimer = null;
 
@@ -35,7 +35,45 @@ jQuery(function($) {
             }
         }
 
-        function syncVideos() {
+        function clearTransitionTimer() {
+            if (transitionTimer) {
+                window.clearTimeout(transitionTimer);
+                transitionTimer = null;
+            }
+        }
+
+        function goToNextSlide() {
+            if ($slides.length < 2) {
+                return;
+            }
+
+            setActiveSlide((currentIndex + 1) % $slides.length);
+        }
+
+        function scheduleNext() {
+            var activeSlide;
+            var activeVideo;
+            var delay = slideDelay;
+            var remainingDuration;
+
+            clearTransitionTimer();
+
+            if ($slides.length < 2) {
+                return;
+            }
+
+            activeSlide = $slides.eq(currentIndex);
+            activeVideo = activeSlide.find('video').get(0);
+
+            if (activeVideo && Number.isFinite(activeVideo.duration) && activeVideo.duration > 0) {
+                remainingDuration = activeVideo.duration - (activeVideo.currentTime || 0);
+                delay = Math.max(400, Math.round(remainingDuration * 1000));
+            }
+
+            transitionTimer = window.setTimeout(goToNextSlide, delay);
+        }
+
+        function syncVideos(options) {
             $allSlides.find('video').each(function() {
                 var video = this;
                 if (!video) {
@@ -46,16 +84,22 @@ jQuery(function($) {
             });
 
             var activeVideo = $slides.eq(currentIndex).find('video').get(0);
+            var preserveProgress = options && options.preserveProgress;
 
             if (!activeVideo) {
+                scheduleNext();
                 return;
             }
 
-            activeVideo.currentTime = 0;
+            if (!preserveProgress) {
+                activeVideo.currentTime = 0;
+            }
+
             playVideo(activeVideo);
+            scheduleNext();
         }
 
-        function setActiveSlide(index) {
+        function setActiveSlide(index, options) {
             if (!$slides.length) {
                 return;
             }
@@ -63,14 +107,11 @@ jQuery(function($) {
             currentIndex = index;
             $allSlides.removeClass('is-active');
             $slides.eq(index).addClass('is-active');
-            syncVideos();
+            syncVideos(options);
         }
 
         function stop() {
-            if (intervalId) {
-                window.clearInterval(intervalId);
-                intervalId = null;
-            }
+            clearTransitionTimer();
 
             $allSlides.find('video').each(function() {
                 var video = this;
@@ -83,27 +124,25 @@ jQuery(function($) {
         }
 
         function start() {
-            if (intervalId || $slides.length < 2) {
+            if ($slides.length < 2) {
                 return;
             }
 
-            intervalId = window.setInterval(function() {
-                setActiveSlide((currentIndex + 1) % $slides.length);
-            }, slideDelay);
+            scheduleNext();
         }
 
-        function sync() {
+        function sync(options) {
             $slides = getVisibleSlides();
+            var preserveProgress = options && options.preserveProgress;
 
             if (!$slides.length) {
                 stop();
                 return;
             }
 
-            currentIndex = Math.min(currentIndex, $slides.length - 1);
-            setActiveSlide(currentIndex);
             stop();
-            start();
+            currentIndex = Math.min(currentIndex, $slides.length - 1);
+            setActiveSlide(currentIndex, { preserveProgress: preserveProgress });
         }
 
         $slides = getVisibleSlides();
@@ -114,12 +153,20 @@ jQuery(function($) {
             video.addEventListener('loadeddata', function() {
                 if ($slides.eq(currentIndex).find('video').get(0) === video) {
                     playVideo(video);
+                    scheduleNext();
                 }
             });
 
             video.addEventListener('canplay', function() {
                 if ($slides.eq(currentIndex).find('video').get(0) === video) {
                     playVideo(video);
+                    scheduleNext();
+                }
+            });
+
+            video.addEventListener('ended', function() {
+                if ($slides.eq(currentIndex).find('video').get(0) === video) {
+                    goToNextSlide();
                 }
             });
         });
@@ -143,7 +190,7 @@ jQuery(function($) {
                 stop();
                 return;
             }
-            start();
+            sync({ preserveProgress: true });
         });
 
         return {

@@ -321,7 +321,7 @@ text-transform: uppercase;
 #hero-banner{
   position: relative;
   overflow: hidden;
-  min-height:650px;
+  min-height:670px;
   background: #111827;
   color:#fff;
 }
@@ -343,7 +343,7 @@ text-transform: uppercase;
   position: relative;
   z-index: 2;
   width: 100%;
-  min-height: 650px;
+  min-height: 670px;
   display: flex;
   align-items: center;
 }
@@ -379,9 +379,6 @@ text-transform: uppercase;
   transform: scale(1.04);
   transition: opacity 1200ms ease, transform 6800ms ease;
 }
-.hero-mobile-slide--desktop-only {
-  display: block;
-}
 .hero-mobile-slider.is-booting .hero-mobile-slide:first-child {
   opacity: 0.82;
   transform: scale(1.06);
@@ -390,23 +387,12 @@ text-transform: uppercase;
   opacity: 1;
   transform: scale(1);
 }
-.hero-mobile-slide picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.hero-mobile-slide video,
-.hero-mobile-slide img {
+.hero-mobile-slide video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-}
-@media only screen and (max-width: 767px) {
-  .hero-mobile-slide--desktop-only {
-    display: none;
-  }
 }
 #hero-banner h1,
 #hero-banner h2 {
@@ -1084,10 +1070,10 @@ font-size: 21px;
 font-size: 15px;
 }
 #hero-banner {
-min-height: 78vh;
+min-height: 80vh;
 }
 #hero-banner .banner-inner {
-min-height: 78vh;
+min-height: 80vh;
 }
 #hero-banner h1,
 #hero-banner h2 {
@@ -1248,10 +1234,10 @@ font-size: 21px;
 font-size: 15px;
 }
 #hero-banner {
-min-height: 82vh;
+min-height: 84vh;
 }
 #hero-banner .banner-inner {
-min-height: 82vh;
+min-height: 84vh;
 }
 #hero-banner h1,
 #hero-banner h2 {
