@@ -248,6 +248,9 @@ text-transform: uppercase;
     margin: 0;
     border: 0;
   }
+  #main-nav.navbar-default .navbar-nav > li + li {
+    margin-top: 0;
+  }
   .navbar-nav>li {
     float: none;
     border: 0;
@@ -262,6 +265,7 @@ text-transform: uppercase;
     color: rgba(245, 247, 248, 0.92);
     font-size: 14px;
     font-weight: 500;
+    line-height: 1.1;
     letter-spacing: 0.03em;
     transition: color 220ms ease, background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
   }
