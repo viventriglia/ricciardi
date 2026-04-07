@@ -496,6 +496,13 @@ jQuery(function($) {
     var $navToggle = $('.navbar-toggle');
     var $navCollapse = $('.navbar-collapse');
     var $mainNav = $('#main-nav');
+    var backToTopProgress = document.querySelector('.back-to-top__progress-circle');
+    var backToTopProgressLength = backToTopProgress ? backToTopProgress.getTotalLength() : 0;
+
+    if (backToTopProgress) {
+        backToTopProgress.style.strokeDasharray = backToTopProgressLength;
+        backToTopProgress.style.strokeDashoffset = backToTopProgressLength;
+    }
 
     function updateMobileNavHeight() {
         var navHeight = $mainNav.find('.navbar-header').outerHeight() || $mainNav.outerHeight() || 82;
@@ -587,7 +594,15 @@ jQuery(function($) {
     };
 
     function updateBackToTop() {
-        $('#tohash').toggleClass('is-visible', $(window).scrollTop() > 500);
+        var $backToTop = $('#tohash');
+        var scrollTop = $(window).scrollTop();
+        var scrollRange = $(document).height() - $(window).height();
+        var progress = scrollRange > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollRange) * 100)) : 0;
+
+        $backToTop.toggleClass('is-visible', scrollTop > 500);
+        if (backToTopProgress) {
+            backToTopProgress.style.strokeDashoffset = backToTopProgressLength * (1 - progress / 100);
+        }
     }
 
     updateBackToTop();

@@ -870,28 +870,51 @@ color: #48B1DF;
   transition: opacity 220ms ease, transform 220ms ease, background-color 220ms ease, border-color 220ms ease;
   z-index: 1090;
 }
+.back-to-top__progress {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  pointer-events: none;
+}
+.back-to-top__progress-track,
+.back-to-top__progress-circle {
+  fill: none;
+  stroke-width: 3;
+}
+.back-to-top__progress-track {
+  stroke: rgba(19, 22, 27, 0.22);
+}
+.back-to-top__progress-circle {
+  stroke: #48B1DF;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 120ms linear;
+}
 .back-to-top.is-visible {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 .back-to-top i {
-  transition: transform 220ms ease;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .back-to-top.is-visible i {
-    animation: backToTopNudge 2.2s ease-in-out infinite;
-  }
+  position: relative;
+  z-index: 1;
+  transition: transform 220ms ease, color 220ms ease;
 }
 .back-to-top:hover,
 .back-to-top:focus {
-  background: #48B1DF;
-  border-color: #48B1DF;
+  background: rgba(20, 26, 34, 0.98);
+  border-color: rgba(72, 177, 223, 0.34);
   color: #ffffff !important;
+  outline: none;
+}
+.back-to-top:hover .back-to-top__progress-circle,
+.back-to-top:focus .back-to-top__progress-circle {
+  stroke: #8bdcff;
 }
 .back-to-top:hover i,
 .back-to-top:focus i {
-  animation-play-state: paused;
   transform: translateY(-1px);
 }
  .navbar-nav {
@@ -1441,12 +1464,4 @@ grid-template-columns: 92px 1fr;
     max-width: 240px;
     width: auto;
     display: block;
-}
-@keyframes backToTopNudge {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
 }
