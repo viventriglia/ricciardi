@@ -54,11 +54,11 @@ window.__BRAND_LOGOS__ = [
   },
   {
     "src": "images/brands/husqvarna_1.webp",
-    "alt": "Husqvarna 1"
+    "alt": "Husqvarna"
   },
   {
     "src": "images/brands/husqvarna_2_automower.webp",
-    "alt": "Husqvarna 2 Automower"
+    "alt": "Husqvarna Automower"
   },
   {
     "src": "images/brands/imer.webp",
@@ -66,11 +66,11 @@ window.__BRAND_LOGOS__ = [
   },
   {
     "src": "images/brands/karcher.webp",
-    "alt": "Karcher"
+    "alt": "Kärcher"
   },
   {
     "src": "images/brands/lavor_pro.webp",
-    "alt": "Lavor Pro"
+    "alt": "Lavor PRO"
   },
   {
     "src": "images/brands/lavor.webp",
@@ -82,11 +82,11 @@ window.__BRAND_LOGOS__ = [
   },
   {
     "src": "images/brands/nidec_tea.webp",
-    "alt": "Nidec Tea"
+    "alt": "Nidec TEA"
   },
   {
     "src": "images/brands/oft.webp",
-    "alt": "Oft"
+    "alt": "OFT"
   },
   {
     "src": "images/brands/pedrollo.webp",

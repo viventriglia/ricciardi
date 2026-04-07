@@ -218,17 +218,25 @@ jQuery(function($) {
 
         function createBrandItem(brand) {
             var item = document.createElement('div');
-            var slot = document.createElement('div');
+            var slot = document.createElement('figure');
             var image = document.createElement('img');
+            var label = document.createElement('figcaption');
+            var brandName = brand.name || brand.alt || '';
 
             item.className = 'brand-item';
             slot.className = 'brand-logo-slot';
             image.src = brand.src;
-            image.alt = brand.alt || '';
+            image.alt = brandName;
             image.loading = 'lazy';
             image.decoding = 'async';
+            label.className = 'brand-logo-slot__label';
+            label.textContent = brandName;
+            label.setAttribute('aria-hidden', 'true');
 
             slot.appendChild(image);
+            if (brandName) {
+                slot.appendChild(label);
+            }
             item.appendChild(slot);
 
             return item;

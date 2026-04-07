@@ -7,12 +7,19 @@ $allowedExtensions = '.webp', '.png', '.jpg', '.jpeg', '.svg'
 
 $nameOverrides = @{
     'ar' = 'AR'
+    'annovi_reverberi' = 'Annovi Reverberi'
     'black_decker' = 'Black+Decker'
     'bluebird' = 'Blue Bird'
     'dab' = 'DAB'
     'dewalt' = 'DEWALT'
     'fox' = 'FOX'
     'hikoki' = 'HiKOKI'
+    'husqvarna_1' = 'Husqvarna'
+    'husqvarna_2_automower' = 'Husqvarna Automower'
+    'lavor_pro' = 'Lavor PRO'
+    'nidec_tea' = 'Nidec TEA'
+    'oft' = 'OFT'
+    'karcher' = 'Kärcher'
     'segway_navimow' = 'Segway Navimow'
 }
 
