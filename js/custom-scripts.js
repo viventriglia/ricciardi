@@ -498,6 +498,7 @@ jQuery(function($) {
     var $mainNav = $('#main-nav');
     var backToTopProgress = document.querySelector('.back-to-top__progress-circle');
     var backToTopProgressLength = backToTopProgress ? backToTopProgress.getTotalLength() : 0;
+    var aboutRevealObserver = null;
 
     if (backToTopProgress) {
         backToTopProgress.style.strokeDasharray = backToTopProgressLength;
@@ -533,12 +534,14 @@ jQuery(function($) {
 
     $(window).on('resize orientationchange', function() {
         disableAboutWowOnMobile();
+        initAboutMobileReveal();
         updateMobileNavHeight();
         updateBackToTop();
     });
 
     $(window).on('load', function() {
         disableAboutWowOnMobile();
+        initAboutMobileReveal();
         updateMobileNavHeight();
         updateBackToTop();
     });
@@ -546,6 +549,7 @@ jQuery(function($) {
     if (window.visualViewport) {
         window.visualViewport.addEventListener('resize', function() {
             disableAboutWowOnMobile();
+            initAboutMobileReveal();
             updateMobileNavHeight();
             updateBackToTop();
         });
@@ -569,6 +573,72 @@ jQuery(function($) {
     }
 
     disableAboutWowOnMobile();
+
+    function initAboutMobileReveal() {
+        var isMobile = window.innerWidth < 768;
+        var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var items = Array.prototype.slice.call(document.querySelectorAll('#about .section-header, #about .about-visual, #about .about-card'));
+
+        if (aboutRevealObserver) {
+            aboutRevealObserver.disconnect();
+            aboutRevealObserver = null;
+        }
+
+        if (!items.length) {
+            return;
+        }
+
+        items.forEach(function(item) {
+            item.classList.remove('about-mobile-reveal', 'about-mobile-reveal--delay-1', 'about-mobile-reveal--delay-2', 'is-visible');
+        });
+
+        if (!isMobile) {
+            return;
+        }
+
+        items.forEach(function(item, index) {
+            item.classList.add('about-mobile-reveal');
+
+            if (index === 1) {
+                item.classList.add('about-mobile-reveal--delay-1');
+            } else if (index === 2) {
+                item.classList.add('about-mobile-reveal--delay-2');
+            }
+        });
+
+        if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+            items.forEach(function(item) {
+                item.classList.add('is-visible');
+            });
+            return;
+        }
+
+        aboutRevealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    aboutRevealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -12% 0px',
+            threshold: 0.18
+        });
+
+        items.forEach(function(item) {
+            var rect = item.getBoundingClientRect();
+            var isAlreadyNearViewport = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+            if (isAlreadyNearViewport) {
+                item.classList.add('is-visible');
+                return;
+            }
+
+            aboutRevealObserver.observe(item);
+        });
+    }
+
+    initAboutMobileReveal();
 
     $('a[href^="#"]').not('[href="#"]').on('click', function(event) {
         var $target = $(this.hash);

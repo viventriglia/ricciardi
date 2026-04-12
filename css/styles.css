@@ -1373,6 +1373,22 @@ line-height: 1.6;
 .contact-hours__item {
 grid-template-columns: 84px 1fr;
 }
+.about-mobile-reveal {
+opacity: 0;
+transform: translateY(22px);
+transition: opacity 520ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+will-change: opacity, transform;
+}
+.about-mobile-reveal.is-visible {
+opacity: 1;
+transform: translateY(0);
+}
+.about-mobile-reveal--delay-1 {
+transition-delay: 70ms;
+}
+.about-mobile-reveal--delay-2 {
+transition-delay: 150ms;
+}
 }
 @media only screen and (min-width: 481px) and (max-width: 767px) {
 #services .features {
@@ -1467,12 +1483,37 @@ font-size: 19px;
 font-size: 19px;
 grid-template-columns: 92px 1fr;
 }
+.about-mobile-reveal {
+opacity: 0;
+transform: translateY(22px);
+transition: opacity 520ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+will-change: opacity, transform;
+}
+.about-mobile-reveal.is-visible {
+opacity: 1;
+transform: translateY(0);
+}
+.about-mobile-reveal--delay-1 {
+transition-delay: 70ms;
+}
+.about-mobile-reveal--delay-2 {
+transition-delay: 150ms;
+}
 }
 .wow-mobile-static {
 visibility: inherit !important;
 animation: none !important;
 opacity: 1 !important;
 transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+.about-mobile-reveal,
+.about-mobile-reveal--delay-1,
+.about-mobile-reveal--delay-2 {
+opacity: 1 !important;
+transform: none !important;
+transition: none !important;
+}
 }
 .navbar-brand img {
     height: 60px;
