@@ -511,6 +511,10 @@ jQuery(function($) {
     }
 
     updateMobileNavHeight();
+    window.setTimeout(function() {
+        updateMobileNavHeight();
+        updateBackToTop();
+    }, 180);
 
     $navCollapse.on('shown.bs.collapse', function() {
         $navToggle.attr('aria-label', 'Chiudi menu');
@@ -528,8 +532,43 @@ jQuery(function($) {
     });
 
     $(window).on('resize orientationchange', function() {
+        disableAboutWowOnMobile();
         updateMobileNavHeight();
+        updateBackToTop();
     });
+
+    $(window).on('load', function() {
+        disableAboutWowOnMobile();
+        updateMobileNavHeight();
+        updateBackToTop();
+    });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', function() {
+            disableAboutWowOnMobile();
+            updateMobileNavHeight();
+            updateBackToTop();
+        });
+    }
+
+    function disableAboutWowOnMobile() {
+        if (window.innerWidth >= 768) {
+            return;
+        }
+
+        $('#about .wow').each(function() {
+            var $element = $(this);
+
+            $element.removeClass('wow fadeInDown fadeInLeft fadeInRight fadeInUp animated');
+            $element.addClass('wow-mobile-static');
+            $element.css({
+                visibility: 'visible',
+                animationName: 'none'
+            });
+        });
+    }
+
+    disableAboutWowOnMobile();
 
     $('a[href^="#"]').not('[href="#"]').on('click', function(event) {
         var $target = $(this.hash);

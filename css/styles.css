@@ -5,6 +5,11 @@ Author URL: http://webthemez.com
 /*************************
 *******Typography******
 **************************/
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   padding-top: 100px;
   background: #fff;
@@ -83,6 +88,9 @@ text-transform: uppercase;
 #main-nav.navbar-default {
   background: rgba(19, 22, 27, 0.96);
   border-bottom: 1px solid rgba(72, 177, 223, 0.28);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .navbar.navbar-default {
   border: 0;
@@ -869,13 +877,16 @@ color: #48B1DF;
   transform: translateY(10px);
   transition: opacity 220ms ease, transform 220ms ease, background-color 220ms ease, border-color 220ms ease;
   z-index: 1090;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .back-to-top__progress {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
   transform: translate(-50%, -50%) rotate(-90deg);
   pointer-events: none;
 }
@@ -1097,12 +1108,10 @@ border-right: 1px solid #171717;
   #hero-banner {
     min-height: 100vh;
     min-height: 100svh;
-    min-height: 100dvh;
   }
   #hero-banner .banner-inner {
     min-height: 100vh;
     min-height: 100svh;
-    min-height: 100dvh;
     box-sizing: border-box;
     padding-top: calc(var(--mobile-nav-height, 82px) * 0.28);
     padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px));
@@ -1214,12 +1223,10 @@ font-size: 15px;
 min-height: 80vh;
 min-height: 100vh;
 min-height: 100svh;
-min-height: 100dvh;
 }
 #hero-banner .banner-inner {
 min-height: 100vh;
 min-height: 100svh;
-min-height: 100dvh;
 box-sizing: border-box;
 padding-top: calc(var(--mobile-nav-height, 82px) * 0.3);
 padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
@@ -1325,10 +1332,14 @@ line-height: 1.7;
 font-size: 14px;
 }
 .back-to-top {
-right: 18px;
-bottom: 18px;
+right: max(22px, calc(env(safe-area-inset-right, 0px) + 22px));
+bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 20px));
 width: 42px;
 height: 42px;
+}
+.back-to-top__progress {
+width: 52px;
+height: 52px;
 }
 #contact {
 padding-bottom: 20px;
@@ -1385,12 +1396,10 @@ font-size: 15px;
 #hero-banner {
 min-height: 100vh;
 min-height: 100svh;
-min-height: 100dvh;
 }
 #hero-banner .banner-inner {
 min-height: 100vh;
 min-height: 100svh;
-min-height: 100dvh;
 box-sizing: border-box;
 padding-top: calc(var(--mobile-nav-height, 78px) * 0.22);
 padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
@@ -1458,6 +1467,12 @@ font-size: 19px;
 font-size: 19px;
 grid-template-columns: 92px 1fr;
 }
+}
+.wow-mobile-static {
+visibility: inherit !important;
+animation: none !important;
+opacity: 1 !important;
+transform: none !important;
 }
 .navbar-brand img {
     height: 60px;
