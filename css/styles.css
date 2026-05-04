@@ -45,14 +45,17 @@ hr {
   border-bottom: 1px solid #fff;
 }
 .section-header {
-  margin-bottom: 42px;
+  display: grid;
+  justify-items: center;
+  row-gap: 28px;
+  margin-bottom: 56px;
 }
 .section-header p{
   max-width: 860px;
   margin: 0 auto;
   text-align:center;
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #5d6873;
 }
 .section-header .section-title {
@@ -60,7 +63,7 @@ hr {
   color: #48B1DF;
   position: relative;
   padding-bottom: 0;
-  margin: 0 0 18px;
+  margin: 0;
   display: block;
   text-align: center;
   border-bottom: 0;
@@ -70,7 +73,7 @@ hr {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -14px;
+  bottom: -16px;
   width: 76px;
   height: 3px;
   transform: translateX(-50%);
