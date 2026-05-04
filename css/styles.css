@@ -13,7 +13,7 @@ body {
 body {
   padding-top: 100px;
   background: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   color: #282828;
   line-height: 26px;
@@ -26,7 +26,7 @@ h4,
 h5,
 h6 {
   font-weight: 600;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 a {
   color: #45aed6;
@@ -459,6 +459,25 @@ color:#48B1DF;
 .features > [class*="col-"] {
   display: flex;
   margin-bottom: 30px;
+}
+@media only screen and (min-width: 992px) {
+  #services .features {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: stretch;
+  }
+  #services .features > [class*="col-"] {
+    float: none;
+    width: auto;
+    margin-bottom: 30px;
+    grid-column: span 2;
+  }
+  #services .features > [class*="col-"]:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  #services .features > [class*="col-"]:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
 }
 .media.service-box {
   margin: 0;
