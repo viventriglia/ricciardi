@@ -107,11 +107,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="css/icons.css?v=20260331-01" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="css/icons.css?v=20260331-01" rel="stylesheet"></noscript>
+    <link rel="preload" href="css/icons.css?v=20260511-01" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="css/icons.css?v=20260511-01" rel="stylesheet"></noscript>
     <link rel="preload" href="css/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> 
     <noscript><link href="css/animate.min.css" rel="stylesheet"></noscript>
-    <link href="css/styles.css?v=20260504-06" rel="stylesheet"> 
+    <link href="css/styles.css?v=20260511-09" rel="stylesheet"> 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" href="/favicon.ico"> 
 </head> 
@@ -138,8 +138,10 @@
                         <li class="scroll active"><a href="#home">Home</a></li> 
                         <li class="scroll"><a href="#about">Chi Siamo</a></li> 
                         <li class="scroll"><a href="#services">Servizi</a></li>
-                        <li class="scroll"><a href="#authorized-brands">Assistenza</a></li>
-                        <li class="scroll"><a href="#contact-us">Contatti</a></li>                        
+                        <li class="scroll"><a href="#contact-us">Contatti</a></li>
+                        <li><a href="faq/index.html">Assistenza</a></li>
+                        <!-- <li><a href="faq/index.html#faq-list">Domande ricorrenti</a></li> -->
+                        <!-- <li><a href="news/index.html">News</a></li> -->
                     </ul>
                 </div>
             </div><!--/.container-->
@@ -240,9 +242,8 @@
         <div class="container">
 
             <div class="section-header">
-                <h2 class="section-title wow fadeInDown">I Nostri Servizi</h2>
-                <p class="wow fadeInDown">Vantiamo oltre 40 anni di esperienza nel commercio e nella riparazione di elettroutensili, sia per uso domestico che industriale.
-                <br>Il nostro personale è in grado di garantirvi un servizio completo, dalla scelta del prodotto più adatto alle vostre esigenze all'assistenza post-vendita.
+                <h2 class="section-title wow fadeInDown">I nostri servizi</h2>
+                <p class="wow fadeInDown">Vantiamo oltre 40 anni di esperienza nel commercio e nella riparazione di elettroutensili, sia per uso domestico che industriale. Il nostro personale è in grado di garantirvi un servizio completo, dalla scelta del prodotto più adatto alle vostre esigenze all'assistenza post-vendita.
                 </p>
             </div>
 
@@ -290,7 +291,7 @@
                                 <i class="fa-solid fa-bolt"></i>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">Motori Elettrici</h4>
+                                <h4 class="media-heading">Motori elettrici</h4>
                                 <p>Effettuiamo il riavvolgimento dei motori elettrici, monofase e trifase.</p>
                             </div>
                         </div>
@@ -302,43 +303,21 @@
                                 <i class="fa-solid fa-robot"></i>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">Robot Rasaerba</h4>
+                                <h4 class="media-heading">Robot rasaerba</h4>
                                 <p>Valutiamo le necessità dei vostri giardini, consigliando e installando il robot più adatto a garantire un taglio sempre perfetto.</p>
                             </div>
                         </div>
                     </div><!--/.col-md-4-->
 
                 </div>
-            </div><!--/.row-->    
+            </div><!--/.row-->
+            <div class="services-area__footer wow fadeInUp" data-wow-duration="400ms" data-wow-delay="80ms">
+                <p>Vuoi approfondire i marchi che trattiamo e le nostre modalità di assistenza?</p>
+                <a class="brand-area__cta" href="faq/index.html">Scopri la nostra assistenza</a>
+            </div>
         </div><!--/.container-->
     </section><!--/#services-->
 
-    <section class="brand-area" id="authorized-brands">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Assistenza Autorizzata</h2>
-                <p class="wow fadeInDown">Offriamo assistenza tecnica autorizzata e vendita
-                    di marchi come Makita, Husqvarna, Kärcher, DAB, Segway e molti altri, garantendovi
-                    supporto qualificato e ricambi originali.
-                </p>
-            </div>
-            <div class="brand-carousel wow fadeInUp" data-wow-duration="500ms" data-wow-delay="0ms">
-                <button class="brand-carousel__arrow brand-carousel__arrow--prev" type="button" aria-label="Marchi precedenti">
-                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-                </button>
-                <div class="brand-carousel__viewport">
-                    <div class="brand-carousel__track"></div>
-                </div>
-                <button class="brand-carousel__arrow brand-carousel__arrow--next" type="button" aria-label="Marchi successivi">
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="brand-area__footer wow fadeInUp" data-wow-duration="500ms" data-wow-delay="80ms">
-                <p>Non vedi ancora il marchio che ti serve? <br>Verifichiamo assistenza, ricambi e disponibilita in officina.</p>
-                <a class="brand-area__cta" href="#contact-us">Chiedi informazioni</a>
-            </div>
-        </div>
-    </section>
     <section id="contact-us">
         <div class="container">
             <div class="section-header">
@@ -427,7 +406,6 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script> 
     <script src="js/wow.min.js"></script>
-    <script src="images/brands/brands-manifest.js?v=20260407-07"></script>
-    <script src="js/custom-scripts.js?v=20260412-03"></script>
+    <script src="js/custom-scripts.js?v=20260511-02"></script>
 </body>
 </html>

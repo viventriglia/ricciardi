@@ -45,6 +45,7 @@
   content: var(--fa);
 }
 
+.fa-house { --fa: "\f015"; }
 .fa-screwdriver-wrench { --fa: "\f7d9"; }
 .fa-droplet { --fa: "\f043"; }
 .fa-faucet-drip { --fa: "\e006"; }

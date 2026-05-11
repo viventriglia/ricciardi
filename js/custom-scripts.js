@@ -208,6 +208,7 @@ jQuery(function($) {
         var track = root.querySelector('.brand-carousel__track');
         var prevButton = root.querySelector('.brand-carousel__arrow--prev');
         var nextButton = root.querySelector('.brand-carousel__arrow--next');
+        var brandBase = root.getAttribute('data-brand-base') || '';
         var autoplayDelay = 10000;
         var manifestItems = Array.isArray(window.__BRAND_LOGOS__) ? window.__BRAND_LOGOS__ : [];
         var allItems = [];
@@ -223,9 +224,21 @@ jQuery(function($) {
             var label = document.createElement('figcaption');
             var brandName = brand.name || brand.alt || '';
 
+            function resolveBrandSrc(src) {
+                if (!src) {
+                    return '';
+                }
+
+                if (/^(?:[a-z]+:)?\/\//i.test(src) || src.charAt(0) === '/' || !brandBase) {
+                    return src;
+                }
+
+                return brandBase + src;
+            }
+
             item.className = 'brand-item';
             slot.className = 'brand-logo-slot';
-            image.src = brand.src;
+            image.src = resolveBrandSrc(brand.src);
             image.alt = brandName;
             image.loading = 'lazy';
             image.decoding = 'async';
@@ -718,7 +731,9 @@ jQuery(function($) {
     Scroll();
 
   
-    new WOW().init();
+    if (typeof WOW !== 'undefined') {
+        new WOW().init();
+    }
  
 
 });
