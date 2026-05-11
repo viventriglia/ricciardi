@@ -715,7 +715,7 @@ color: #48B1DF;
 .page-shell .brand-area__footer {
   margin-top: 32px;
 }
-.faq-section-header {
+.support-questions-header {
   margin-bottom: 38px;
 }
 .page-content {
@@ -727,22 +727,22 @@ color: #48B1DF;
   background: #ffffff;
   box-shadow: 0 22px 42px rgba(12, 18, 26, 0.08);
 }
-.faq-list {
+.support-questions {
   display: grid;
   gap: 0;
 }
-.faq-item {
+.support-question {
   padding: 20px 0;
   border-bottom: 1px solid #e6edf1;
 }
-.faq-item:first-child {
+.support-question:first-child {
   padding-top: 0;
 }
-.faq-item:last-child {
+.support-question:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }
-.faq-item summary {
+.support-question summary {
   position: relative;
   padding: 0 34px 0 0;
   list-style: none;
@@ -752,10 +752,10 @@ color: #48B1DF;
   font-weight: 600;
   color: #1f2d37;
 }
-.faq-item summary::-webkit-details-marker {
+.support-question summary::-webkit-details-marker {
   display: none;
 }
-.faq-item summary::after {
+.support-question summary::after {
   content: "+";
   position: absolute;
   right: 0;
@@ -765,10 +765,10 @@ color: #48B1DF;
   line-height: 1;
   font-weight: 500;
 }
-.faq-item[open] summary::after {
+.support-question[open] summary::after {
   content: "−";
 }
-.faq-item p {
+.support-question p {
   margin: 14px 0 0;
   font-size: 18px;
   line-height: 1.8;
@@ -1541,17 +1541,17 @@ background: #ffffff;
 .page-shell .brand-area {
 padding-bottom: 44px;
 }
-.faq-section-header {
+.support-questions-header {
 margin-bottom: 30px;
 }
 .page-content {
 padding: 22px 18px 24px;
 border-radius: 20px;
 }
-.faq-item summary {
+.support-question summary {
 font-size: 20px;
 }
-.faq-item p,
+.support-question p,
 .news-card p {
 font-size: 16px;
 }
@@ -1679,7 +1679,7 @@ background: #ffffff;
 .page-shell .brand-area {
 padding-bottom: 48px;
 }
-.faq-section-header {
+.support-questions-header {
 margin-bottom: 32px;
 }
 .page-content {
