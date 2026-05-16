@@ -30,7 +30,7 @@
     <noscript><link href="../css/icons.css?v=20260511-01" rel="stylesheet"></noscript>
     <link rel="preload" href="../css/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="../css/animate.min.css" rel="stylesheet"></noscript>
-    <link href="../css/styles.css?v=20260511-10" rel="stylesheet">
+    <link href="../css/styles.css?v=20260517-06" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
@@ -52,17 +52,18 @@
                 <div id="primary-nav" class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li><a href="../index.html">Home</a></li>
-                        <li><a href="../index.html#about">Chi Siamo</a></li>
-                        <li><a href="../index.html#services">Servizi</a></li>
-                        <li><a href="../index.html#contact-us">Contatti</a></li>
+                        <li class="nav-home-child"><a href="../index.html#about">Chi Siamo</a></li>
+                        <li class="nav-home-child"><a href="../index.html#services">Servizi</a></li>
+                        <li class="nav-home-child"><a href="../index.html#contact-us">Contatti</a></li>
                         <li class="active"><a href="index.html">Assistenza</a></li>
-                    </ul>
+                        <li class="nav-mobile-only nav-assistenza-child"><a href="#domande-ricorrenti">Domande frequenti</a></li>
+                      </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <section id="page-top" class="page-shell">
+    <section id="page-top" class="page-shell support-page-shell">
         <div class="container">
             <div class="brand-area brand-area--subpage">
                 <div class="section-header wow fadeInDown">
@@ -88,7 +89,12 @@
                     <a class="brand-area__cta" href="../index.html#contact-us">Chiedi informazioni</a>
                 </div>
             </div>
-            <div class="section-header support-questions-header wow fadeInDown" data-wow-duration="500ms" data-wow-delay="120ms" id="domande-ricorrenti">
+        </div>
+    </section>
+
+    <section class="support-questions-area" id="domande-ricorrenti">
+        <div class="container">
+            <div class="section-header support-questions-header wow fadeInDown" data-wow-duration="500ms" data-wow-delay="120ms">
                 <h2 class="section-title">Domande ricorrenti</h2>
                 <p>Risposte rapide ai dubbi più comuni su ricambi, interventi, pagamenti e modalità di assistenza in officina.</p>
             </div>

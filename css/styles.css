@@ -220,8 +220,17 @@ text-transform: uppercase;
   box-shadow: inset 2px 0 0 #48B1DF;
 }
 #main-nav.navbar-default .navbar-nav > li > a:focus {
-  outline: none;
-}
+    outline: none;
+  }
+#main-nav.navbar-default .navbar-nav > li.nav-home-child > a {
+    padding-left: 32px;
+  }
+#main-nav.navbar-default .navbar-nav > li.nav-assistenza-child > a {
+    padding-left: 32px;
+  }
+.nav-mobile-only {
+    display: list-item;
+  }
  
 
 @media only screen and (min-width: 768px) {
@@ -269,6 +278,12 @@ text-transform: uppercase;
   }
   #main-nav.navbar-default .navbar-nav > li + li {
     margin-top: 0;
+  }
+  #main-nav.navbar-default .navbar-nav > li.nav-home-child > a {
+    padding-left: 14px;
+  }
+  #main-nav.navbar-default .navbar-nav > li.nav-assistenza-child > a {
+    display: none;
   }
   .navbar-nav>li {
     float: none;
@@ -708,12 +723,20 @@ color: #48B1DF;
   padding: 148px 0 88px;
   background: #ffffff;
 }
+.support-page-shell {
+    min-height: 0;
+    padding-bottom: 82px;
+  }
 .page-shell .brand-area {
-  padding: 0 0 58px;
-  background: transparent;
-}
+    padding: 0;
+    background: transparent;
+  }
 .page-shell .brand-area__footer {
-  margin-top: 32px;
+    margin-top: 32px;
+  }
+.support-questions-area {
+  padding: 92px 0 96px;
+  background: #f8f8f6;
 }
 .support-questions-header {
   margin-bottom: 38px;
@@ -1538,8 +1561,15 @@ grid-template-columns: 84px 1fr;
 padding: 132px 0 68px;
 background: #ffffff;
 }
+.support-page-shell {
+  min-height: 0;
+  padding-bottom: 82px;
+  }
 .page-shell .brand-area {
-padding-bottom: 44px;
+  padding: 0;
+  }
+.support-questions-area {
+padding: 72px 0 76px;
 }
 .support-questions-header {
 margin-bottom: 30px;
@@ -1676,8 +1706,15 @@ grid-template-columns: 92px 1fr;
 padding: 138px 0 72px;
 background: #ffffff;
 }
+.support-page-shell {
+  min-height: 0;
+  padding-bottom: 82px;
+  }
 .page-shell .brand-area {
-padding-bottom: 48px;
+  padding: 0;
+  }
+.support-questions-area {
+padding: 78px 0 82px;
 }
 .support-questions-header {
 margin-bottom: 32px;
