@@ -37,10 +37,6 @@ window.__BRAND_LOGOS__ = [
     "alt": "DEWALT"
   },
   {
-    "src": "images/brands/einhell.webp",
-    "alt": "Einhell"
-  },
-  {
     "src": "images/brands/femi.webp",
     "alt": "Femi"
   },

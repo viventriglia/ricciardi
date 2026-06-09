@@ -4,6 +4,9 @@ $root = Split-Path -Parent $PSScriptRoot
 $brandDir = Join-Path $root 'images\\brands'
 $manifestPath = Join-Path $brandDir 'brands-manifest.js'
 $allowedExtensions = '.webp', '.png', '.jpg', '.jpeg', '.svg'
+$excludedBaseNames = @(
+    'einhell'
+)
 
 $nameOverrides = @{
     'ar' = 'AR'
@@ -42,7 +45,8 @@ function Get-BrandLabel {
 $items = Get-ChildItem -Path $brandDir -File |
     Where-Object {
         $allowedExtensions -contains $_.Extension.ToLowerInvariant() -and
-        $_.Name -ne 'brands-manifest.js'
+        $_.Name -ne 'brands-manifest.js' -and
+        $excludedBaseNames -notcontains $_.BaseName.ToLowerInvariant()
     } |
     Sort-Object Name |
     ForEach-Object {
