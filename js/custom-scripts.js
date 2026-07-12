@@ -1,9 +1,153 @@
-/*
-Author: webthemez.com
-Author URL: http://webthemez.com
-*/
 jQuery(function($) {
     'use strict';
+
+    var siteNoticeConfig = {
+        id: 'summer-2026',
+        startDate: '2026-07-01',
+        endDate: '2026-08-24',
+        iconClass: 'fa-solid fa-sailboat',
+        message: [
+            'A luglio e agosto resteremo chiusi il sabato.',
+            'Saremo in ferie dall\'8 al 24 agosto, riapriremo marted\u00ec 25.'
+        ]
+    };
+
+    function parseSiteNoticeDate(dateString, useEndOfDay) {
+        var parts;
+
+        if (!dateString) {
+            return null;
+        }
+
+        parts = dateString.split('-').map(function(part) {
+            return parseInt(part, 10);
+        });
+
+        if (parts.length !== 3 || parts.some(function(part) { return !Number.isFinite(part); })) {
+            return null;
+        }
+
+        if (useEndOfDay) {
+            return new Date(parts[0], parts[1] - 1, parts[2], 23, 59, 59, 999);
+        }
+
+        return new Date(parts[0], parts[1] - 1, parts[2], 0, 0, 0, 0);
+    }
+
+    function isSiteNoticeActive(config) {
+        var now = new Date();
+        var startDate = parseSiteNoticeDate(config.startDate, false);
+        var endDate = parseSiteNoticeDate(config.endDate, true);
+
+        if (startDate && now < startDate) {
+            return false;
+        }
+
+        if (endDate && now > endDate) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function updateSiteNoticeHeight(notice) {
+        if (!notice || !notice.classList.contains('is-visible')) {
+            document.documentElement.style.removeProperty('--site-notice-height');
+            return;
+        }
+
+        document.documentElement.style.setProperty('--site-notice-height', notice.offsetHeight + 'px');
+    }
+
+    function initSiteNotice(config) {
+        var notice;
+        var inner;
+        var indicator;
+        var content;
+        var message;
+        var closeButton;
+        var icon;
+        var lines;
+        var scheduleFrame;
+
+        if (!config || !config.id || !isSiteNoticeActive(config)) {
+            return;
+        }
+
+        lines = Array.isArray(config.message) ? config.message : [config.message];
+        scheduleFrame = window.requestAnimationFrame || function(callback) {
+            window.setTimeout(callback, 0);
+        };
+
+        notice = document.createElement('aside');
+        inner = document.createElement('div');
+        indicator = document.createElement('span');
+        content = document.createElement('div');
+        message = document.createElement('p');
+        closeButton = document.createElement('button');
+
+        notice.className = 'site-notice';
+        notice.setAttribute('aria-labelledby', 'site-notice-message');
+        inner.className = 'site-notice__inner';
+        indicator.className = 'site-notice__indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        icon = document.createElement('i');
+        icon.className = config.iconClass || '';
+        icon.setAttribute('aria-hidden', 'true');
+        indicator.appendChild(icon);
+        content.className = 'site-notice__content';
+        message.className = 'site-notice__message';
+        message.id = 'site-notice-message';
+        closeButton.className = 'site-notice__close';
+        closeButton.type = 'button';
+        closeButton.setAttribute('aria-label', 'Chiudi avviso');
+        closeButton.textContent = '\u00d7';
+
+        lines.forEach(function(line) {
+            var lineElement;
+
+            if (!line) {
+                return;
+            }
+
+            lineElement = document.createElement('span');
+            lineElement.className = 'site-notice__line';
+            lineElement.textContent = line;
+            message.appendChild(lineElement);
+        });
+
+        content.appendChild(message);
+        inner.appendChild(indicator);
+        inner.appendChild(content);
+        inner.appendChild(closeButton);
+        notice.appendChild(inner);
+        document.body.appendChild(notice);
+
+        function hideNotice() {
+            notice.classList.remove('is-visible');
+            document.body.classList.remove('has-site-notice');
+            updateSiteNoticeHeight(null);
+
+            window.setTimeout(function() {
+                if (notice.parentNode) {
+                    notice.parentNode.removeChild(notice);
+                }
+            }, 240);
+        }
+
+        closeButton.addEventListener('click', hideNotice);
+        window.addEventListener('resize', function() {
+            updateSiteNoticeHeight(notice);
+        });
+
+        scheduleFrame(function() {
+            notice.classList.add('is-visible');
+            document.body.classList.add('has-site-notice');
+            updateSiteNoticeHeight(notice);
+        });
+    }
+
+    initSiteNotice(siteNoticeConfig);
 
     var heroSlider = (function() {
         var $slider = $('.hero-mobile-slider');
