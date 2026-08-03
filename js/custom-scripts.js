@@ -50,6 +50,48 @@ jQuery(function($) {
         return true;
     }
 
+    function getSiteNoticeStorageKey(config) {
+        return 'siteNoticeDismissed:' + config.id;
+    }
+
+    function wasPageReloaded() {
+        var entries;
+
+        if (window.performance && typeof window.performance.getEntriesByType === 'function') {
+            entries = window.performance.getEntriesByType('navigation');
+
+            if (entries && entries.length) {
+                return entries[0].type === 'reload';
+            }
+        }
+
+        return !!(window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+    }
+
+    function resetSiteNoticeOnReload(config) {
+        if (!wasPageReloaded()) {
+            return;
+        }
+
+        try {
+            window.sessionStorage.removeItem(getSiteNoticeStorageKey(config));
+        } catch (error) {}
+    }
+
+    function isSiteNoticeDismissed(config) {
+        try {
+            return window.sessionStorage.getItem(getSiteNoticeStorageKey(config)) === '1';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function dismissSiteNotice(config) {
+        try {
+            window.sessionStorage.setItem(getSiteNoticeStorageKey(config), '1');
+        } catch (error) {}
+    }
+
     function updateSiteNoticeHeight(notice) {
         if (!notice || !notice.classList.contains('is-visible')) {
             document.documentElement.style.removeProperty('--site-notice-height');
@@ -71,6 +113,12 @@ jQuery(function($) {
         var scheduleFrame;
 
         if (!config || !config.id || !isSiteNoticeActive(config)) {
+            return;
+        }
+
+        resetSiteNoticeOnReload(config);
+
+        if (isSiteNoticeDismissed(config)) {
             return;
         }
 
@@ -124,6 +172,7 @@ jQuery(function($) {
         document.body.appendChild(notice);
 
         function hideNotice() {
+            dismissSiteNotice(config);
             notice.classList.remove('is-visible');
             document.body.classList.remove('has-site-notice');
             updateSiteNoticeHeight(null);
