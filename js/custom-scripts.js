@@ -855,18 +855,25 @@ jQuery(function($) {
 
         event.preventDefault();
 
-        var link = this;
-        $('html, body').animate({
-            scrollTop: $target.offset().top - 5
-        }, 1000);
+        var headerHeight = $mainNav.find('.navbar-header').outerHeight() || 82;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        $('html, body').stop(true).animate({
+            scrollTop: Math.max(0, $target.offset().top - headerHeight - 14)
+        }, reduceMotion ? 0 : 400).promise().done(function() {
+            var target = $target[0];
+            if (!target.hasAttribute('tabindex')) {
+                target.setAttribute('tabindex', '-1');
+                target.addEventListener('blur', function() {
+                    target.removeAttribute('tabindex');
+                }, { once: true });
+            }
+            target.focus({ preventScroll: true });
+        });
 
         if (window.innerWidth < 768 && $navCollapse.hasClass('in')) {
             $navCollapse.collapse('hide');
         }
 
-        window.setTimeout(function() {
-            link.blur();
-        }, 120);
     });
  
     function Scroll() {

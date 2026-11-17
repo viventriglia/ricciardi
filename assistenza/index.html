@@ -33,6 +33,7 @@
     <link href="../css/styles.css?v=20261117-03" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" href="/favicon.ico">
+    <link href="../css/navigation.css?v=20261117-03" rel="stylesheet">
 </head>
 <body>
     <header id="header">
@@ -50,15 +51,47 @@
                     <a class="navbar-brand" href="../index.html"><img src="../images/logo_esteso.webp" alt="Ricciardi Luigi Elettromeccanica"></a>
                 </div>
                 <div id="primary-nav" class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../index.html">Home</a></li>
-                        <li class="nav-home-child"><a href="../index.html#about">Chi Siamo</a></li>
-                        <li class="nav-home-child"><a href="../index.html#services">Servizi</a></li>
-                        <li class="nav-home-child"><a href="../index.html#contact-us">Contatti</a></li>
-                        <li><a href="../robot-rasaerba/index.html">Robot rasaerba</a></li>
-                        <li class="active"><a href="index.html">Assistenza</a></li>
-                        <li class="nav-mobile-only nav-assistenza-child"><a href="#domande-ricorrenti">Domande frequenti</a></li>
-                      </ul>
+                    <ul class="nav navbar-nav site-nav">
+                        <li class="site-nav__item">
+                            <div class="site-nav__row">
+                                <a class="site-nav__page" href="../index.html">Home</a>
+                                <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-home-sections" aria-label="Sezioni Home"><span aria-hidden="true"></span></button>
+                            </div>
+                            <div class="site-nav__panel" id="nav-home-sections">
+                                <ul class="site-nav__sections">
+                                    <li><a class="site-nav__section-link" href="../index.html#about">Chi siamo</a></li>
+                                    <li><a class="site-nav__section-link" href="../index.html#services">Servizi</a></li>
+                                    <li><a class="site-nav__section-link" href="../index.html#contact-us">Contatti</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="site-nav__item">
+                            <div class="site-nav__row">
+                                <a class="site-nav__page" href="../robot-rasaerba/index.html">Robot rasaerba</a>
+                                <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-robot-sections" aria-label="Sezioni Robot rasaerba"><span aria-hidden="true"></span></button>
+                            </div>
+                            <div class="site-nav__panel" id="nav-robot-sections">
+                                <ul class="site-nav__sections">
+                                    <li><a class="site-nav__section-link" href="../robot-rasaerba/index.html#scelta">Partiamo dalle tue esigenze</a></li>
+                                    <li><a class="site-nav__section-link" href="../robot-rasaerba/index.html#marchi">I nostri marchi</a></li>
+                                    <li><a class="site-nav__section-link" href="../robot-rasaerba/index.html#supporto">Dalla scelta al supporto</a></li>
+                                    <li><a class="site-nav__section-link" href="../robot-rasaerba/index.html#domande-frequenti">Domande frequenti</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="site-nav__item active">
+                            <div class="site-nav__row">
+                                <a class="site-nav__page" href="#page-top" aria-current="page">Assistenza</a>
+                                <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-assistenza-sections" aria-label="Sezioni Assistenza"><span aria-hidden="true"></span></button>
+                            </div>
+                            <div class="site-nav__panel" id="nav-assistenza-sections">
+                                <ul class="site-nav__sections">
+                                    <li><a class="site-nav__section-link" href="#marchi">I nostri marchi</a></li>
+                                    <li><a class="site-nav__section-link" href="#domande-ricorrenti">Domande frequenti</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -67,7 +100,7 @@
     <section id="page-top" class="page-shell support-page-shell">
         <div class="container">
             <nav class="page-breadcrumb" aria-label="Percorso di navigazione"><a href="../index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Assistenza</span></nav>
-            <div class="brand-area brand-area--subpage">
+            <div id="marchi" class="brand-area brand-area--subpage">
                 <div class="section-header wow fadeInDown">
                     <h1 class="section-title">Assistenza autorizzata</h1>
                     <p>Offriamo assistenza tecnica autorizzata e vendita
@@ -158,6 +191,7 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../images/brands/brands-manifest.js?v=20260609-01"></script>
     <script src="../js/wow.min.js"></script>
-    <script src="../js/custom-scripts.js?v=20260803-01"></script>
+    <script src="../js/navigation.js?v=20261117-01"></script>
+    <script src="../js/custom-scripts.js?v=20261117-01"></script>
 </body>
 </html>

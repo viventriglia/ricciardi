@@ -76,6 +76,7 @@
     ]
 }
     </script>
+    <link href="../css/navigation.css?v=20261117-03" rel="stylesheet">
 </head>
 <body>
     <header id="header">
@@ -93,15 +94,47 @@
                     <a class="navbar-brand" href="../index.html"><img src="../images/logo_esteso.webp" alt="Ricciardi Luigi Elettromeccanica"></a>
                 </div>
                 <div id="primary-nav" class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../index.html">Home</a></li>
-                        <li class="nav-home-child"><a href="../index.html#about">Chi Siamo</a></li>
-                        <li class="nav-home-child"><a href="../index.html#services">Servizi</a></li>
-                        <li class="nav-home-child"><a href="../index.html#contact-us">Contatti</a></li>
-                        <li class="active"><a href="index.html" aria-current="page">Robot rasaerba</a></li>
-                        <li><a href="../assistenza/index.html">Assistenza</a></li>
-                        <li class="nav-mobile-only nav-assistenza-child"><a href="../assistenza/index.html#domande-ricorrenti">Domande frequenti</a></li>
-                      </ul>
+                    <ul class="nav navbar-nav site-nav">
+                        <li class="site-nav__item">
+                            <div class="site-nav__row">
+                                <a class="site-nav__page" href="../index.html">Home</a>
+                                <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-home-sections" aria-label="Sezioni Home"><span aria-hidden="true"></span></button>
+                            </div>
+                            <div class="site-nav__panel" id="nav-home-sections">
+                                <ul class="site-nav__sections">
+                                    <li><a class="site-nav__section-link" href="../index.html#about">Chi siamo</a></li>
+                                    <li><a class="site-nav__section-link" href="../index.html#services">Servizi</a></li>
+                                    <li><a class="site-nav__section-link" href="../index.html#contact-us">Contatti</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="site-nav__item active">
+                            <div class="site-nav__row">
+                                <a class="site-nav__page" href="#page-top" aria-current="page">Robot rasaerba</a>
+                                <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-robot-sections" aria-label="Sezioni Robot rasaerba"><span aria-hidden="true"></span></button>
+                            </div>
+                            <div class="site-nav__panel" id="nav-robot-sections">
+                                <ul class="site-nav__sections">
+                                    <li><a class="site-nav__section-link" href="#scelta">Partiamo dalle tue esigenze</a></li>
+                                    <li><a class="site-nav__section-link" href="#marchi">I nostri marchi</a></li>
+                                    <li><a class="site-nav__section-link" href="#supporto">Dalla scelta al supporto</a></li>
+                                    <li><a class="site-nav__section-link" href="#domande-frequenti">Domande frequenti</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="site-nav__item">
+                            <div class="site-nav__row">
+                                <a class="site-nav__page" href="../assistenza/index.html">Assistenza</a>
+                                <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="nav-assistenza-sections" aria-label="Sezioni Assistenza"><span aria-hidden="true"></span></button>
+                            </div>
+                            <div class="site-nav__panel" id="nav-assistenza-sections">
+                                <ul class="site-nav__sections">
+                                    <li><a class="site-nav__section-link" href="../assistenza/index.html#marchi">I nostri marchi</a></li>
+                                    <li><a class="site-nav__section-link" href="../assistenza/index.html#domande-ricorrenti">Domande frequenti</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -132,7 +165,7 @@
         </div>
     </section>
 
-    <section class="mower-section mower-section--soft" aria-labelledby="scelta-title">
+    <section id="scelta" class="mower-section mower-section--soft" aria-labelledby="scelta-title">
         <div class="container">
             <div class="section-header mower-section-heading wow fadeInDown" data-wow-duration="500ms"><h2 class="section-title" id="scelta-title">Ogni prato ha le sue esigenze</h2><p>I metri quadrati sono un punto di partenza. Per scegliere un robot tagliaerba contano anche la forma del giardino, gli ostacoli e le condizioni in cui dovrà lavorare.</p></div>
             <dl class="mower-factors wow fadeInUp" data-wow-duration="500ms" data-wow-delay="80ms">
@@ -168,7 +201,7 @@
         </div>
     </section>
 
-    <section class="mower-section mower-section--soft" aria-labelledby="supporto-title">
+    <section id="supporto" class="mower-section mower-section--soft" aria-labelledby="supporto-title">
         <div class="container">
             <div class="section-header mower-section-heading wow fadeInDown" data-wow-duration="500ms"><h2 class="section-title" id="supporto-title">Dalla scelta al supporto dopo l'acquisto</h2></div>
             <div class="mower-split mower-split--support wow fadeInUp" data-wow-duration="500ms" data-wow-delay="80ms">
@@ -184,7 +217,7 @@
         </div>
     </section>
 
-    <section class="mower-section" aria-labelledby="faq-title">
+    <section id="domande-frequenti" class="mower-section" aria-labelledby="faq-title">
         <div class="container">
             <div class="section-header support-questions-header wow fadeInDown" data-wow-duration="500ms"><h2 class="section-title" id="faq-title">Domande frequenti</h2></div>
             <div class="page-content support-questions wow fadeInUp" data-wow-duration="500ms" data-wow-delay="80ms">
@@ -251,6 +284,7 @@
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/wow.min.js"></script>
-    <script src="../js/custom-scripts.js?v=20260803-01"></script>
+    <script src="../js/navigation.js?v=20261117-01"></script>
+    <script src="../js/custom-scripts.js?v=20261117-01"></script>
 </body>
 </html>
