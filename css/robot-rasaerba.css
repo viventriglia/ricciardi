@@ -1,4 +1,10 @@
 /* Pagina robot rasaerba: usa tipografia, navigazione e footer condivisi. */
+@media (prefers-reduced-motion: reduce) {
+  .mower-page .wow {
+    visibility: visible !important;
+    animation: none !important;
+  }
+}
 .mower-page { color: #5d6873; font-size: 18px; line-height: 1.8; }
 .mower-page h3 { margin: 0 0 20px; color: #1f2d37; font-size: 28px; line-height: 1.3; }
 .mower-page :where(p) { margin: 0 0 20px; }
