@@ -843,6 +843,31 @@ color: #48B1DF;
 .support-question summary::-webkit-details-marker {
   display: none;
 }
+.support-question summary:focus-visible {
+  outline: 2px solid #176686;
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+/* Native exclusive details groups; animate only when supported and requested. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports selector(details::details-content) and (transition-behavior: allow-discrete) {
+    .support-question::details-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 220ms ease, opacity 180ms ease,
+                  content-visibility 220ms allow-discrete;
+    }
+    .support-question[open]::details-content {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .support-answer {
+      min-height: 0;
+      overflow: hidden;
+    }
+  }
+}
 .support-question summary::after {
   content: "+";
   position: absolute;
