@@ -585,6 +585,14 @@ color: #48B1DF;
   font-weight: 600;
   color: #1e2b36;
 }
+.media.service-box .media-heading a {
+  color: inherit;
+}
+.media.service-box .media-heading a:hover,
+.media.service-box .media-heading a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .media.service-box p {
   margin: 0;
   font-size: 15px;
@@ -752,6 +760,28 @@ color: #48B1DF;
   line-height: 1.9;
   font-weight: 400;
   color: #5d6873;
+}
+.page-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 42px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5d6873;
+}
+.page-breadcrumb a {
+  color: #176686;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page-breadcrumb a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+@media (max-width: 767px) {
+  .page-breadcrumb { margin-bottom: 28px; }
 }
 .page-shell {
   min-height: 100vh;
@@ -1951,4 +1981,12 @@ transition: none !important;
     max-width: 240px;
     width: auto;
     display: block;
+}
+
+/* Keep the expanded navigation within the tablet header. Home sections
+   remain accessible from Home and from the full mobile menu. */
+@media (min-width: 768px) and (max-width: 991px) {
+  #main-nav.navbar-default .navbar-nav > li.nav-home-child {
+    display: none;
+  }
 }

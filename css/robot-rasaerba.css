@@ -1,0 +1,47 @@
+/* Pagina robot rasaerba: usa tipografia, navigazione e footer condivisi. */
+.mower-page { color: #5d6873; font-size: 18px; line-height: 1.8; }
+.mower-page h3 { margin: 0 0 20px; color: #1f2d37; font-size: 28px; line-height: 1.3; }
+.mower-page :where(p) { margin: 0 0 20px; }
+.mower-page a:focus-visible { outline: 2px solid #176686; outline-offset: 5px; }
+.mower-text-link { color: #176686; text-decoration: underline; text-underline-offset: 4px; }
+.mower-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.mower-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 24px; margin-top: 26px; }
+.mower-actions .brand-area__cta { margin-top: 0; }
+.mower-text-link { display: inline-block; font-size: 16px; font-weight: 600; }
+.mower-media { margin: 0; overflow: hidden; border-radius: 24px; background: #f8f8f6; }
+.mower-media img { display: block; width: 100%; height: auto; }
+.mower-media--hero img { aspect-ratio: 1; object-fit: cover; }
+.mower-section { padding: 92px 0 96px; background: #fff; }
+.mower-section--soft { background: #f8f8f6; }
+.mower-section-heading { margin-bottom: 42px; }
+.mower-factors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; margin: 0; }
+.mower-factors > div { border-top: 1px solid #e6edf1; padding-top: 20px; }
+.mower-factors dt { margin-bottom: 10px; color: #1f2d37; font-size: 22px; font-weight: 600; }
+.mower-factors dd { margin: 0; }
+.mower-brands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.mower-brand { border: 1px solid #e6edf1; border-radius: 24px; background: #fff; overflow: hidden; }
+.mower-brand .mower-media { border-radius: 0; }
+.mower-brand .mower-media--logo { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; padding: 32px; background: #fff; }
+.mower-brand .mower-media--logo img { width: min(100%, 280px); height: 180px; aspect-ratio: auto; object-fit: contain; }
+.mower-brand__body { padding: 32px; }
+.mower-split--support { align-items: center; }
+.mower-steps { padding-left: 24px; margin: 26px 0; }
+.mower-steps li { padding-left: 6px; margin-bottom: 20px; }
+.mower-steps strong { color: #1f2d37; }
+.mower-contact__content { max-width: 860px; margin: 0 auto; text-align: center; }
+.mower-contact .mower-actions { justify-content: center; align-items: center; }
+@media (max-width: 991px) {
+  .mower-split { gap: 32px; }
+  .mower-brand__body { padding: 24px; }
+}
+@media (max-width: 767px) {
+  .mower-page { font-size: 16px; }
+  .mower-split, .mower-brands, .mower-factors { grid-template-columns: minmax(0, 1fr); }
+  .mower-section { padding: 72px 0 76px; }
+  .mower-section-heading { margin-bottom: 30px; }
+  .mower-brand__body { padding: 22px 18px 24px; }
+  .mower-brand, .mower-media { border-radius: 20px; }
+  .mower-brand .mower-media--logo { aspect-ratio: auto; padding: 24px; }
+  .mower-brand .mower-media--logo img { height: 140px; }
+  .mower-actions { align-items: flex-start; flex-direction: column; }
+}
